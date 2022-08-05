@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all rounds
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new round
+    </h2>
+
+    <form action="/insert_round" method="post">
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="attempts_count_box">
+          Attempts count
+        </label>
+
+        <input type="text" id="attempts_count_box" name="query_attempts_count">
+      </div>
+
+      <button>
+        Create round
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Attempts count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_rounds.each do |a_round| %>
+      <tr>
+        <td>
+          <%= a_round.id %>
+        </td>
+
+        <td>
+          <%= a_round.user_id %>
+        </td>
+
+        <td>
+          <%= a_round.attempts_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_round.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_round.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/rounds/<%= a_round.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

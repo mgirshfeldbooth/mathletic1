@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Round #<%= @the_round.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/rounds">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_round/<%= @the_round.id %>">
+          Delete round
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_round.user_id %>
+      </dd>
+
+      <dt>
+        Attempts count
+      </dt>
+      <dd>
+        <%= @the_round.attempts_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_round.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_round.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit round
+    </h2>
+
+    <form action="/modify_round/<%= @the_round.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_round.user_id %>">
+      </div>
+
+      <div>
+        <label for="attempts_count_box">
+          Attempts count
+        </label>
+
+        <input type="text" id="attempts_count_box" name="query_attempts_count" value="<%= @the_round.attempts_count %>">
+      </div>
+
+      <button>
+        Update round
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Exercise #<%= @the_exercise.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/exercises">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_exercise/<%= @the_exercise.id %>">
+          Delete exercise
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Question
+      </dt>
+      <dd>
+        <%= @the_exercise.question %>
+      </dd>
+
+      <dt>
+        Answer
+      </dt>
+      <dd>
+        <%= @the_exercise.answer %>
+      </dd>
+
+      <dt>
+        Difficulty
+      </dt>
+      <dd>
+        <%= @the_exercise.difficulty %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_exercise.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_exercise.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit exercise
+    </h2>
+
+    <form action="/modify_exercise/<%= @the_exercise.id %>"  method="post" >
+      <div>
+        <label for="question_box">
+          Question
+        </label>
+
+        <input type="text" id="question_box" name="query_question" value="<%= @the_exercise.question %>">
+      </div>
+
+      <div>
+        <label for="answer_box">
+          Answer
+        </label>
+
+        <input type="text" id="answer_box" name="query_answer" value="<%= @the_exercise.answer %>">
+      </div>
+
+      <div>
+        <label for="difficulty_box">
+          Difficulty
+        </label>
+
+        <input type="text" id="difficulty_box" name="query_difficulty" value="<%= @the_exercise.difficulty %>">
+      </div>
+
+      <button>
+        Update exercise
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

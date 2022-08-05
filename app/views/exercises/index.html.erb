@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all exercises
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new exercise
+    </h2>
+
+    <form action="/insert_exercise" method="post">
+      <div>
+        <label for="question_box">
+          Question
+        </label>
+
+        <input type="text" id="question_box" name="query_question">
+      </div>
+
+      <div>
+        <label for="answer_box">
+          Answer
+        </label>
+
+        <input type="text" id="answer_box" name="query_answer">
+      </div>
+
+      <div>
+        <label for="difficulty_box">
+          Difficulty
+        </label>
+
+        <input type="text" id="difficulty_box" name="query_difficulty">
+      </div>
+
+      <button>
+        Create exercise
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Question
+        </th>
+
+        <th>
+          Answer
+        </th>
+
+        <th>
+          Difficulty
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_exercises.each do |an_exercise| %>
+      <tr>
+        <td>
+          <%= an_exercise.id %>
+        </td>
+
+        <td>
+          <%= an_exercise.question %>
+        </td>
+
+        <td>
+          <%= an_exercise.answer %>
+        </td>
+
+        <td>
+          <%= an_exercise.difficulty %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_exercise.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_exercise.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/exercises/<%= an_exercise.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,163 @@
+<div>
+  <div>
+    <h1>
+      Attempt #<%= @the_attempt.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/attempts">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_attempt/<%= @the_attempt.id %>">
+          Delete attempt
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Correct
+      </dt>
+      <dd>
+        <%= @the_attempt.correct %>
+      </dd>
+
+      <dt>
+        Started at
+      </dt>
+      <dd>
+        <%= @the_attempt.started_at %>
+      </dd>
+
+      <dt>
+        Finished at
+      </dt>
+      <dd>
+        <%= @the_attempt.finished_at %>
+      </dd>
+
+      <dt>
+        Submission
+      </dt>
+      <dd>
+        <%= @the_attempt.submission %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_attempt.user_id %>
+      </dd>
+
+      <dt>
+        Exercise
+      </dt>
+      <dd>
+        <%= @the_attempt.exercise_id %>
+      </dd>
+
+      <dt>
+        Round
+      </dt>
+      <dd>
+        <%= @the_attempt.round_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_attempt.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_attempt.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit attempt
+    </h2>
+
+    <form action="/modify_attempt/<%= @the_attempt.id %>"  method="post" >
+      <div>
+        <input type="checkbox" id="correct_box" name="query_correct" value="1" <%= "checked" if @the_attempt.correct %>>
+
+        <label for="correct_box">
+            Correct
+        </label>
+      </div>
+
+      <div>
+        <label for="started_at_box">
+          Started at
+        </label>
+
+        <input type="datetime-local" id="started_at_box" name="query_started_at"
+         value="<%= @the_attempt.started_at %>">
+      </div>
+
+      <div>
+        <label for="finished_at_box">
+          Finished at
+        </label>
+
+        <input type="datetime-local" id="finished_at_box" name="query_finished_at"
+         value="<%= @the_attempt.finished_at %>">
+      </div>
+
+      <div>
+        <label for="submission_box">
+          Submission
+        </label>
+
+        <input type="text" id="submission_box" name="query_submission" value="<%= @the_attempt.submission %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_attempt.user_id %>">
+      </div>
+
+      <div>
+        <label for="exercise_id_box">
+          Exercise
+        </label>
+
+        <input type="text" id="exercise_id_box" name="query_exercise_id" value="<%= @the_attempt.exercise_id %>">
+      </div>
+
+      <div>
+        <label for="round_id_box">
+          Round
+        </label>
+
+        <input type="text" id="round_id_box" name="query_round_id" value="<%= @the_attempt.round_id %>">
+      </div>
+
+      <button>
+        Update attempt
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

@@ -10,6 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2022_08_03_000850) do
+
+  create_table "attempts", force: :cascade do |t|
+    t.boolean "correct"
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.float "submission"
+    t.integer "user_id"
+    t.integer "exercise_id"
+    t.integer "round_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "question"
+    t.float "answer"
+    t.integer "difficulty"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "attempts_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.integer "attempts_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end

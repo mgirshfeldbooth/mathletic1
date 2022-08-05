@@ -1,0 +1,180 @@
+<div>
+  <div>
+    <h1>
+      List of all attempts
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new attempt
+    </h2>
+
+    <form action="/insert_attempt" method="post">
+      <div>
+        <input type="checkbox" id="correct_box" name="query_correct" value="1">
+
+        <label for="correct_box">Correct</label>
+      </div>
+
+      <div>
+        <label for="started_at_box">
+          Started at
+        </label>
+
+        <input type="datetime-local" id="started_at_box" name="query_started_at">
+      </div>
+
+      <div>
+        <label for="finished_at_box">
+          Finished at
+        </label>
+
+        <input type="datetime-local" id="finished_at_box" name="query_finished_at">
+      </div>
+
+      <div>
+        <label for="submission_box">
+          Submission
+        </label>
+
+        <input type="text" id="submission_box" name="query_submission">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="exercise_id_box">
+          Exercise
+        </label>
+
+        <input type="text" id="exercise_id_box" name="query_exercise_id">
+      </div>
+
+      <div>
+        <label for="round_id_box">
+          Round
+        </label>
+
+        <input type="text" id="round_id_box" name="query_round_id">
+      </div>
+
+      <button>
+        Create attempt
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Correct
+        </th>
+
+        <th>
+          Started at
+        </th>
+
+        <th>
+          Finished at
+        </th>
+
+        <th>
+          Submission
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Exercise
+        </th>
+
+        <th>
+          Round
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_attempts.each do |an_attempt| %>
+      <tr>
+        <td>
+          <%= an_attempt.id %>
+        </td>
+
+        <td>
+          <%= an_attempt.correct %>
+        </td>
+
+        <td>
+          <%= an_attempt.started_at %>
+        </td>
+
+        <td>
+          <%= an_attempt.finished_at %>
+        </td>
+
+        <td>
+          <%= an_attempt.submission %>
+        </td>
+
+        <td>
+          <%= an_attempt.user_id %>
+        </td>
+
+        <td>
+          <%= an_attempt.exercise_id %>
+        </td>
+
+        <td>
+          <%= an_attempt.round_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_attempt.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_attempt.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/attempts/<%= an_attempt.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
