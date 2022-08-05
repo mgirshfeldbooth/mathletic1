@@ -1,3 +1,23 @@
+<% level = 1 %>
+<% current_exercise = Exercise.where( :difficulty => level ).shuffle.first %>
+
+
+<div>
+  <h1>
+    <%= current_exercise.question %>
+  </h1>
+</div>
+
+<div>
+Answer:
+<%= current_exercise.answer %>
+</div>
+
+<div>
+Difficulty:
+<%= current_exercise.difficulty %>
+</div>
+
 <div>
   <div>
     <h1>
@@ -45,20 +65,21 @@
         <input type="text" id="submission_box" name="query_submission">
       </div>
 
-      <div>
+      <!-- <div>
         <label for="user_id_box">
           User
         </label>
 
-        <input type="text" id="user_id_box" name="query_user_id">
+        <input type="text" id="user_id_box" name="query_user_id" value=<%= session.fetch(:user_id) %>>
       </div>
-
+      -->
+      
       <div>
         <label for="exercise_id_box">
           Exercise
         </label>
 
-        <input type="text" id="exercise_id_box" name="query_exercise_id">
+        <input type="text" id="exercise_id_box" name="query_exercise_id" value="<%= current_exercise.id %>">
       </div>
 
       <div>

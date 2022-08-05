@@ -1,4 +1,9 @@
 class RoundsController < ApplicationController
+  def play
+    render({ :template => "rounds/play.html.erb" })
+
+  end
+
   def index
     matching_rounds = Round.all
 

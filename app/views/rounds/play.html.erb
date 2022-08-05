@@ -1,0 +1,20 @@
+<% level = 1 %>
+<% x = Exercise.where( :difficulty => level ).shuffle.first %>
+
+
+<div>
+  <h1>
+    <%= x.question %>
+  </h1>
+</div>
+
+<div>
+Answer:
+<%= x.answer %>
+</div>
+
+<div>
+Difficulty:
+<%= x.difficulty %>
+</div>
+

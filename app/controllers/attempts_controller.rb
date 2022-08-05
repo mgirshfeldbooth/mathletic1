@@ -18,15 +18,20 @@ class AttemptsController < ApplicationController
   end
 
   def create
+    self.load_current_user
+
     the_attempt = Attempt.new
-    the_attempt.correct = params.fetch("query_correct", false)
+    
     the_attempt.started_at = params.fetch("query_started_at")
     the_attempt.finished_at = params.fetch("query_finished_at")
     the_attempt.submission = params.fetch("query_submission")
-    the_attempt.user_id = params.fetch("query_user_id")
+    
+    the_attempt.user_id = session.fetch(:user_id)
     the_attempt.exercise_id = params.fetch("query_exercise_id")
     the_attempt.round_id = params.fetch("query_round_id")
+    the_attempt.correct = (if the_attempt.submission == the_attempt.exercise.answer then true else false end)
 
+    
     if the_attempt.valid?
       the_attempt.save
       redirect_to("/attempts", { :notice => "Attempt created successfully." })
