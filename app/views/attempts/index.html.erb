@@ -1,4 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
 
+</head>
+
+<body>
 <% current_exercise = Exercise.where( :difficulty => cookies.fetch(:user_level) ).shuffle.first %>
 
 <div class="container">
@@ -58,6 +64,7 @@
   </div>
 </div>
 
+</body>
 
 <!--
 
