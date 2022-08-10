@@ -60,7 +60,7 @@
         </td>
 
         <td>
-          <%= Attempt.where(:user => @current_user, :round => a_round.id ).joins(:exercise).average(:difficulty) %>
+          <!-- <%= Attempt.where(:user => @current_user, :round => a_round.id ).joins(:exercise).average(:difficulty) %> -->
 
          <%= a_round.exercises.average(:difficulty) %>
         </td>
