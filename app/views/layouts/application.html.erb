@@ -39,19 +39,19 @@
   <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Mathletic</a>
+    <a class="navbar-brand prompt2" href="#">Mathletic</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item prompt2">
           <a class="nav-link" href="/rounds">Play</a>
         </li>
 
 
       </ul>
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 prompt2">
         <% if session.fetch(:user_id) == nil %>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="/user_sign_up">Sign Up</a>
@@ -105,8 +105,8 @@
     </ul>
     -->
 
-    <p style="color: green"><%= notice %></p>
-    <p style="color: red"><%= alert %></p>
+    <p style="color:green; text-align:center"><%= notice %></p>
+    <p style="color:red; text-align:center"><%= alert %></p>
 
 
     <%= yield %>

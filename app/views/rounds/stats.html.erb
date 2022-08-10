@@ -1,16 +1,21 @@
-<h1> You've completed 
- <%= @current_user.rounds.count %>
- rounds!
-</h1>
 
+<div class="container">
+  <div class="row prompt1">
+    <div class="col-md-12 text-center">
 
+      You've completed 
+      <%= @current_user.rounds.count %>
+      rounds!
 
-<div>
-  <div>
-    <table border="1">
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12 text-center stats">
+<table border="1" class="table table-striped stats">
       <tr>
         <th>
-          ID
+          Date
         </th>
 
         <th>
@@ -43,7 +48,7 @@
       <% @list_of_rounds.each do |a_round| %>
       <tr>
         <td>
-          <%= a_round.id %>
+          <%= time_ago_in_words(a_round.created_at) %> ago
         </td>
 
         <td>
@@ -76,5 +81,18 @@
       </tr>
       <% end %>
     </table>
+    </div>
+  </div>
+
+
+
+<h1> 
+</h1>
+
+
+
+<div>
+  <div>
+    
   </div>
 </div>

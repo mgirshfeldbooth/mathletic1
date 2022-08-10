@@ -2,7 +2,7 @@
 <% current_exercise = Exercise.where( :difficulty => cookies.fetch(:user_level) ).shuffle.first %>
 
 <div class="container">
-  <div class="row prompt">
+  <div class="row prompt1">
     <div class="col-md-12 text-center">
 
       <%= current_exercise.question %>
@@ -12,26 +12,28 @@
   </div>
   
   <div class="row">
-    <div class="col-md-12 text-center">
+    <div class="col-md-12 text-center prompt2">
 
    Difficulty:
       <%= current_exercise.difficulty %>
    
     </div>
   </div>
-
+<br><br>
   <div class="row">
     <div class="col-md-12 text-center">
       <form action="/insert_attempt" method="post">
 
         <%= hidden_field_tag "starting_timestamp", @starting_timestamp %>
 
-        <div>
+        <div class="form-outline prompt2">
           <label for="submission_box">
-            Submission
+            Your Answer: 
           </label>
-
+          
+          <div>
           <input type="text" id="submission_box" name="query_submission" autofocus>
+          </div>
         </div>
 
         <div>
@@ -46,8 +48,8 @@
           <input type="hidden" id="round_id_box" name="query_round_id" value="<%= cookies.fetch(:current_round) %>">
         </div>
 
-
-        <button class="btn btn-primary btn-lg">
+        <br>
+        <button class="btn btn-dark btn-lg">
           Submit
         </button>
       </form>
@@ -56,32 +58,8 @@
   </div>
 </div>
 
-<div>
-  <h1>
-    
-  </h1>
-</div>
 
-
-<div>
-
-</div>
-
-<br>
-<div>
-
-</div>
-
-<pre>
-
-
-
-
-
-
-</pre>
-<hr>
-
+<!--
 
 <div>
   <div>
@@ -205,3 +183,4 @@
 </div>
 
 <hr>
+-->
