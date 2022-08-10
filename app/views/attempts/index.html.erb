@@ -2,12 +2,19 @@
 <% current_exercise = Exercise.where( :difficulty => cookies.fetch(:user_level) ).shuffle.first %>
 
 <div class="container">
-  <div class="row">
+  <div class="row prompt">
     <div class="col-md-12 text-center">
 
       <%= current_exercise.question %>
 
-      Difficulty:
+   
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12 text-center">
+
+   Difficulty:
       <%= current_exercise.difficulty %>
    
     </div>
