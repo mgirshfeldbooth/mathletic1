@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   get("/", { :controller => "rounds", :action => "index" })
 
-  get("/play", { :controller => "rounds", :action => "play" })
+  get("/play", { :controller => "rounds", :action => "create" })
+
+  get("/round_complete", { :controller => "rounds", :action => "complete" })
+
+  get("/stats", { :controller => "rounds", :action => "stats" })
 
   # Routes for the Round resource:
 

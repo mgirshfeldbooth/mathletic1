@@ -11,4 +11,6 @@
 class Round < ApplicationRecord
   belongs_to(:user, { :required => true, :class_name => "User", :foreign_key => "user_id" })
   has_many(:attempts, { :class_name => "Attempt", :foreign_key => "round_id", :dependent => :destroy })
+
+  has_many :exercises, :through => :attempts
 end

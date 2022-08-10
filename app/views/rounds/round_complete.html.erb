@@ -1,0 +1,9 @@
+<h3>Stats for this round:</h3><br>
+Round ID: <%= @current_user.rounds.last.id %> <br>
+# of Exercises: <%= num_of_attempts = @current_user.rounds.last.attempts_count %> <br>
+Accuracy: <%= (@current_user.rounds.last.attempts.average(:correct) * 100).round.to_s + "%" %> <br>
+Round started:  <%= @current_user.rounds.last.attempts.first.started_at %> <br>
+Round finished: <%= @current_user.rounds.last.attempts.last.finished_at %> <br>
+<% start_to_finish = @current_user.rounds.last.attempts.last.finished_at - @current_user.rounds.last.attempts.first.started_at %>
+Total time for round: <%= start_to_finish.round(2).to_s + " seconds" %> <br>
+Average Time Per Exercise: <%= (start_to_finish / num_of_attempts).round(2).to_s + " seconds"  %> <br>

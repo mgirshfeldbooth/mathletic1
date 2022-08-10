@@ -1,22 +1,80 @@
-<% level = 1 %>
-<% current_exercise = Exercise.where( :difficulty => level ).shuffle.first %>
 
+<% current_exercise = Exercise.where( :difficulty => cookies.fetch(:user_level) ).shuffle.first %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+
+      <%= current_exercise.question %>
+
+      Difficulty:
+      <%= current_exercise.difficulty %>
+   
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <form action="/insert_attempt" method="post">
+
+        <%= hidden_field_tag "starting_timestamp", @starting_timestamp %>
+
+        <div>
+          <label for="submission_box">
+            Submission
+          </label>
+
+          <input type="text" id="submission_box" name="query_submission" autofocus>
+        </div>
+
+        <div>
+          <input type="hidden" id="user_id_box" name="query_user_id" value=<%= session.fetch(:user_id) %>>
+        </div>
+
+        <div>
+          <input type="hidden" id="exercise_id_box" name="query_exercise_id" value="<%= current_exercise.id %>">
+        </div>
+
+        <div>
+          <input type="hidden" id="round_id_box" name="query_round_id" value="<%= cookies.fetch(:current_round) %>">
+        </div>
+
+
+        <button class="btn btn-primary btn-lg">
+          Submit
+        </button>
+      </form>
+    
+    </div>
+  </div>
+</div>
 
 <div>
   <h1>
-    <%= current_exercise.question %>
+    
   </h1>
 </div>
 
-<div>
-Answer:
-<%= current_exercise.answer %>
-</div>
 
 <div>
-Difficulty:
-<%= current_exercise.difficulty %>
+
 </div>
+
+<br>
+<div>
+
+</div>
+
+<pre>
+
+
+
+
+
+
+</pre>
+<hr>
+
 
 <div>
   <div>
@@ -34,66 +92,7 @@ Difficulty:
       Add a new attempt
     </h2>
 
-    <form action="/insert_attempt" method="post">
-      <div>
-        <input type="checkbox" id="correct_box" name="query_correct" value="1">
-
-        <label for="correct_box">Correct</label>
-      </div>
-
-      <div>
-        <label for="started_at_box">
-          Started at
-        </label>
-
-        <input type="datetime-local" id="started_at_box" name="query_started_at">
-      </div>
-
-      <div>
-        <label for="finished_at_box">
-          Finished at
-        </label>
-
-        <input type="datetime-local" id="finished_at_box" name="query_finished_at">
-      </div>
-
-      <div>
-        <label for="submission_box">
-          Submission
-        </label>
-
-        <input type="text" id="submission_box" name="query_submission">
-      </div>
-
-      <!-- <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id" value=<%= session.fetch(:user_id) %>>
-      </div>
-      -->
-      
-      <div>
-        <label for="exercise_id_box">
-          Exercise
-        </label>
-
-        <input type="text" id="exercise_id_box" name="query_exercise_id" value="<%= current_exercise.id %>">
-      </div>
-
-      <div>
-        <label for="round_id_box">
-          Round
-        </label>
-
-        <input type="text" id="round_id_box" name="query_round_id">
-      </div>
-
-      <button>
-        Create attempt
-      </button>
-    </form>
+    
   </div>
 </div>
 

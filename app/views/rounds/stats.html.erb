@@ -1,0 +1,80 @@
+<h1> You've completed 
+ <%= @current_user.rounds.count %>
+ rounds!
+</h1>
+
+
+
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Attempts
+        </th>
+
+        <th>
+          Correct
+        </th>
+
+        <th>
+          Average Difficulty
+        </th>
+
+        <th>
+          Accuracy
+        </th>
+
+        <th>
+          Total Time for Round
+        </th>
+
+        <th>
+          Average Time Per Exercise
+        </th>
+
+        
+      </tr>
+
+      <% @list_of_rounds.each do |a_round| %>
+      <tr>
+        <td>
+          <%= a_round.id %>
+        </td>
+
+        <td>
+          <%= num_of_attempts = a_round.attempts_count %>
+        </td>
+
+        <td>
+          <%= a_round.attempts.where( :correct => true ).count %>
+        </td>
+
+        <td>
+          <%= Attempt.where(:user => @current_user, :round => a_round.id ).joins(:exercise).average(:difficulty) %>
+
+         <%= a_round.exercises.average(:difficulty) %>
+        </td>
+
+        <td>
+          <%= ((a_round.attempts.average(:correct) * 100).round.to_s + "%" ) %>
+        </td>
+
+        <td>
+          <% start_to_finish = a_round.attempts.last.finished_at - a_round.attempts.first.started_at %>
+          <%= start_to_finish.round(2).to_s + " seconds" %>
+        </td>
+
+        <td>
+          <%= (start_to_finish / num_of_attempts).round(2).to_s + " seconds"  %>
+        </td>
+
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
