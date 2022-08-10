@@ -1,18 +1,10 @@
-body {
-
-
-}
-
 
 .prompt1 {
-  
-
   font-size: 64px;
   font-family: 'Nanum Brush Script', cursive;
 }
 
 .prompt2 {
-
   font-size: 36px;
   font-family: 'Nanum Brush Script', cursive;
 }
@@ -20,10 +12,7 @@ body {
 .stats {
   font-size: 24px;
   font-family: 'Arial'
-
 }
-
-
 
 .form {
   text-align: center
