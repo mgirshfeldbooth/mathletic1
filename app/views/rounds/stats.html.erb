@@ -66,8 +66,8 @@
         </td>
 
         <td>
-          <%= (a_round.attempts.where(:correct => true)).count.to_f / num_of_attempts %>
-          <!--  <%= (((a_round.attempts.average(:correct){ afaera e} *100).round.to_s + "%" )) %> -->
+          <%= ((a_round.attempts.where( :correct => true ).count.to_f / num_of_attempts)*100).round(2).to_s + "%" %>
+
         </td>
 
         <td>
