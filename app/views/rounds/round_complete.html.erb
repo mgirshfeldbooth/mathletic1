@@ -12,7 +12,7 @@
     <div class="col-md-12 text-center stats">
 <%= num_of_attempts = @current_user.rounds.last.attempts_count %> Exercises <br>
 <%= @current_user.rounds.last.attempts.where( :correct => true ).count %> Correct <br>
-Accuracy: <%= ((@current_user.rounds.last.attempts.where(:correct => true).count.to_f / num_of_attempts)*100).round(2).to_s + "%" %> <br>
+Accuracy: <%= (@current_user.rounds.last.attempts.where(:correct => true).count.to_f / num_of_attempts).round(2) git %> <br>
 Difficulty Reached: <%= @current_user.rounds.last.exercises.maximum(:difficulty) %> <br>
 <% start_to_finish = @current_user.rounds.last.attempts.last.finished_at - @current_user.rounds.last.attempts.first.started_at %>
 Total Time For Round: <%= start_to_finish.round(2).to_s + " seconds" %> <br>
