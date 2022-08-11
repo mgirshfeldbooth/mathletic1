@@ -27,7 +27,7 @@
         </th>
 
         <th>
-          Average Difficulty
+          Difficulty Reached
         </th>
 
         <th>
@@ -62,7 +62,7 @@
         <td>
           <!-- <%= Attempt.where(:user => @current_user, :round => a_round.id ).joins(:exercise).average(:difficulty) %> -->
 
-         <%= a_round.exercises.average(:difficulty) %>
+         <%= a_round.exercises.maximum(:difficulty) %>
         </td>
 
         <td>
