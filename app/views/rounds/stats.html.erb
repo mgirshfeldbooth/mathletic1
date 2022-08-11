@@ -66,7 +66,8 @@
         </td>
 
         <td>
-          <%= ((a_round.attempts.average(:correct)*100).round.to_s + "%" ) %>
+          <%= a_round.attempts.average(:correct) %>
+          <!--  <%= (((a_round.attempts.average(:correct){ afaera e} *100).round.to_s + "%" )) %> -->
         </td>
 
         <td>
