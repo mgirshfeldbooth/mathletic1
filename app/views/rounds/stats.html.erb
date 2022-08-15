@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row prompt1">
     <div class="col-md-12 text-center">
@@ -9,91 +8,91 @@
 
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-md-12 text-center stats">
-<table border="1" class="table table-striped stats">
-      <tr>
-        <th>
-          Time
-        </th>
+      <table border="1" class="table table-striped stats">
+        <tr>
+          <th>
+            Time
+          </th>
 
-        <th>
-          Attempts
-        </th>
+          <th>
+            Attempts
+          </th>
 
-        <th>
-          Correct
-        </th>
+          <th>
+            Correct
+          </th>
 
-        <th>
-          Difficulty Reached
-        </th>
+          <th>
+            Difficulty Reached
+          </th>
 
-        <th>
-          Accuracy
-        </th>
+          <th>
+            Accuracy
+          </th>
 
-        <th>
-          Total Time for Round
-        </th>
+          <th>
+            Total Time for Round
+          </th>
 
-        <th>
-          Average Time Per Exercise
-        </th>
+          <th>
+            Average Time Per Exercise
+          </th>
 
-        
-      </tr>
+        </tr>
 
-      <% @list_of_rounds.each do |a_round| %>
-      <tr>
-        <td>
-          <%= time_ago_in_words(a_round.created_at) %> ago
-        </td>
+        <% @list_of_rounds.each do |a_round| %>
+          <tr>
+            <td>
+              <%= time_ago_in_words(a_round.created_at) %> ago
+            </td>
 
-        <td>
-          <%= num_of_attempts = a_round.attempts_count %>
-        </td>
+            <td>
+              <%= num_of_attempts = a_round.attempts_count %>
+            </td>
 
-        <td>
-          <%= a_round.attempts.where( :correct => true ).count %>
-        </td>
+            <td>
+              <%= a_round.attempts.where( :correct => true ).count %>
+            </td>
 
-        <td>
-          <!-- <%= Attempt.where(:user => @current_user, :round => a_round.id ).joins(:exercise).average(:difficulty) %> -->
+            <td>
+              <!-- <%= Attempt.where(:user => @current_user, :round => a_round.id ).joins(:exercise).average(:difficulty) %> -->
 
-         <%= a_round.exercises.maximum(:difficulty) %>
-        </td>
+              <%= a_round.exercises.maximum(:difficulty) %>
+            </td>
 
-        <td>
-          <%= (a_round.attempts.where( :correct => true ).count.to_f / num_of_attempts).round(2) %>
+            <td>
+              <%= attempts_in_round = a_round.attempts %>
+              <%=    correct_attempts = attempts_in_round.where( :correct => true ) %>
+              <%=  count_correct = correct_attempts.count %>
+              <%=  float_correct = count_correct.to_f %>
+              <%=  percent_correct = float_correct / num_of_attempts %>
+              <%=  accuracy_rounded = percent_correct.round(2) %>
 
-        </td>
+            </td>
 
-        <td>
-          <% start_to_finish = a_round.attempts.last.finished_at - a_round.attempts.first.started_at %>
-          <%= start_to_finish.round(2).to_s + " seconds" %>
-        </td>
+            <td>
+              <% start_to_finish = a_round.attempts.last.finished_at - a_round.attempts.first.started_at %>
+              <%= start_to_finish.round(2).to_s + " seconds" %>
+            </td>
 
-        <td>
-          <%= (start_to_finish / num_of_attempts).round(2).to_s + " seconds"  %>
-        </td>
+            <td>
+              <%= (start_to_finish / num_of_attempts).round(2).to_s + " seconds"  %>
+            </td>
 
-      </tr>
-      <% end %>
-    </table>
+          </tr>
+        <% end %>
+      </table>
     </div>
   </div>
 
+  <h1>
+  </h1>
 
-
-<h1> 
-</h1>
-
-
-
-<div>
   <div>
-    
+    <div>
+
+    </div>
   </div>
-</div>
